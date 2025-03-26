@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Order;
 
-
 return new class extends Migration
 {
     /**
@@ -13,9 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('order', function (Blueprint $table) {
+            $table->softDeletes(); // Adds a deleted_at column
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order');
+        Schema::table('order', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
