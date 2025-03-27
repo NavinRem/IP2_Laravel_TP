@@ -14,6 +14,32 @@ class Product extends Model
 
     protected $fillable = ['name', 'pricing', 'category_id', 'discounted', 'active'];
 
+
+    // A Product belongs to one Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    // A Product can belong to many Orders
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product')
+                    ->withPivot('price', 'quantity');
+    }
+
+    // A Product can be in multiple Wishlist items
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    // A Product can be in multiple Carts
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
     // Retrieve all products
     public static function getAllProducts()
     {

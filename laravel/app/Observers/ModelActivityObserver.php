@@ -14,10 +14,10 @@ class ModelActivityObserver
     public function created(Order $order): void
     {
         ActivityLog::create([
-            'model'    => get_class($model),
-            'model_id' => $model->id,
+            'model'    => get_class($order),
+            'model_id' => $order->id,
             'action'   => 'created',
-            'changes'  => json_encode($model->toArray()),
+            'changes'  => json_encode($order->toArray()),
         ]);
         //
     }
@@ -28,12 +28,12 @@ class ModelActivityObserver
     public function updated(Order $order): void
     {
         ActivityLog::create([
-            'model'    => get_class($model),
-            'model_id' => $model->id,
+            'model'    => get_class($order),
+            'model_id' => $order->id,
             'action'   => 'updated',
             'changes'  => json_encode([
-                'old' => $model->getOriginal(),
-                'new' => $model->getChanges(),
+                'old' => $order->getOriginal(),
+                'new' => $order->getChanges(),
             ]),
         ]);
         //
@@ -45,10 +45,10 @@ class ModelActivityObserver
     public function deleted(Order $order): void
     {
         ActivityLog::create([
-            'model'    => get_class($model),
-            'model_id' => $model->id,
+            'model'    => get_class($order),
+            'model_id' => $order->id,
             'action'   => 'deleted',
-            'changes'  => json_encode($model->toArray()),
+            'changes'  => json_encode($order->toArray()),
         ]);
         //
     }
