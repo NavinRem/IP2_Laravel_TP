@@ -14,6 +14,16 @@ php artisan cache:table
 
 
 
+fatal: Authentication failed for 'https://github.com/NavinRem/IP2_Laravel_TP.git/'
+navin-rem@navinrem-IdeaPad-3-14ITL05:~/Code/IP2_Laravel_TP$ git push origin TP8
+Username for 'https://github.com': NavinRem
+Password for 'https://NavinRem@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/NavinRem/IP2_Laravel_TP.git/'
+navin-rem@navinrem-IdeaPad-3-14ITL05:~/Code/IP2_Laravel_TP$ 
+
+
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
