@@ -23,5 +23,5 @@ Route::controller(ProductController::class)->prefix('products')->group(function(
     Route::patch('/{productId}', 'updateProduct');
     Route::delete('/{productId}', 'deleteProduct');
 });
-// Route::resource('categories', CategoryController::class);
+Route::resource('categories', CategoryController::class);
 
