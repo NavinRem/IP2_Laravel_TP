@@ -14,12 +14,17 @@ class UploadController extends Controller
             'document' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
         // Store the file
+        $file = $request->file('document');
         $filename = time() . '_' . $request->file('document')->getClientOriginalName();
         $path = $request->file('document')->storeAs('uploads', $filename, 'public');
 
         $url = asset('storage/' . $path);
         // Return a response
-        return response()->json(['url' => $url], 200);
+        return response()->json([
+            'message' => 'File uploaded successfully',
+            'path' => $path,
+            'url' => $url
+        ], 200);
         
     }
 }

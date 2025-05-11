@@ -60,7 +60,7 @@ return [
             'report' => false,
         ],
 
-       'minio' => [
+      'minio' => [
             'driver' => 's3',
             'key' => env('MINIO_ACCESS_KEY_ID'),
             'secret' => env('MINIO_SECRET_ACCESS_KEY'),
@@ -69,6 +69,7 @@ return [
             'endpoint' => env('MINIO_ENDPOINT'),
             'use_path_style_endpoint' => true,
         ],
+
 
 
     ],

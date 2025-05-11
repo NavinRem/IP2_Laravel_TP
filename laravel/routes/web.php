@@ -13,15 +13,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::get('/upload_file', function () {
     return view('upload_file');
 });
-Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::post('/upload_file', [UploadController::class, 'upload'])->name('upload');
+
 
 Route::get('/upload_gallery', function () {
     return view('upload_gallery');
 });
-Route::post('/upload_gallery', [GalleryController::class, 'upload'])->name('upload_gallery');
+Route::post('/upload_gallery', [GalleryController::class, 'upload'])->name('upload');
 
 
 Route::middleware('auth')->group(function () {
