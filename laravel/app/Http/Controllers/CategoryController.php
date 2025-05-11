@@ -4,10 +4,48 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+    
 
 class CategoryController extends Controller
 {
+        public function index()
+    {
+        $categories = Category::all();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $categories
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Find the category by its ID
+        $category = Category::findOrFail($id);
+
+        // Update the category's name or other fields
+        $category->update([
+            'name' => $request->input('name'),
+        ]);
+
+        // Return the updated category
+        return response()->json($category, 200);
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the request
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Create the category
+        $category = Category::create($validated);
+
+        // Return a JSON response with the created category and status code 201
+        return response()->json($category, 201);
+    }
+
     // --- Get /api/categories
     public function getCategories() {
         return response()->json(Category::all());

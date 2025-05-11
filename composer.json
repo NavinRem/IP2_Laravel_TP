@@ -1,0 +1,7 @@
+{
+    "require": {
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "intervention/image": "^2",
+        "league/flysystem": "^3.0"
+    }
+}
