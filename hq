@@ -1,0 +1,96 @@
+[33mcommit 9ca16d9397f19e2d61f9cfd0dfe6d413fe6bc79c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mTP9[m[33m)[m
+Author: NavinRem <sonavin.rem@gmail.com>
+Date:   Sun May 11 21:04:12 2025 +0700
+
+    First Commit of TP09 - Modification
+
+[33mcommit b89a3b9cb09ce60a3bf105ba7ec36c1925590b6b[m[33m ([m[1;31morigin/TP8[m[33m, [m[1;32mTP8[m[33m)[m
+Author: NavinRem <sonavin.rem@gmail.com>
+Date:   Sun May 11 14:52:47 2025 +0700
+
+    Finish TP08 and TP09 is progressing
+
+[33mcommit a72f307e1a13102c5f66e7c1f2ad57d7f72b6adb[m
+Author: NavinRem <sonavin.rem@gmail.com>
+Date:   Fri May 9 21:56:09 2025 +0700
+
+    Modified Readme
+
+[33mcommit 302cf49ed4910c89955cb4d16635eba2d90bb230[m
+Author: NavinRem <sonavin.rem@gmail.com>
+Date:   Fri May 9 19:23:24 2025 +0700
+
+    Readme
+
+[33mcommit 5fd3135c24909797b20dcf31ad45b1912b795fef[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Fri May 9 18:59:05 2025 +0700
+
+    kk
+
+[33mcommit db1582aa0db8418e6166e5d707a4bd773734fb21[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Fri May 9 12:29:36 2025 +0700
+
+    TP8
+
+[33mcommit fa82ad4b7a891f2e2748b189d06c955b27a1fc44[m[33m ([m[1;31morigin/TP07[m[33m)[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Fri Mar 28 09:52:50 2025 +0700
+
+    Change the format of date in Order.php
+
+[33mcommit 13d79daebce6b080c48323d0329ab57c75cd6746[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Thu Mar 27 13:56:41 2025 +0700
+
+    Add relationship in model, and attributes in each table
+
+[33mcommit a1d842b26a34982b072c7192864ac240ff963d14[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Wed Mar 26 21:43:44 2025 +0700
+
+    Finish file creation in each task
+
+[33mcommit 186fdc200d0055a03154f7ff5e0badd7981c1ebd[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Wed Mar 26 18:20:47 2025 +0700
+
+    Add new migrations and models files
+
+[33mcommit bf3e65a992faa32df72ecf9343af16a4b02b5f0f[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Wed Mar 26 09:19:49 2025 +0700
+
+    Add new migration files for 6 tables, and add new model files - relationships inside each model
+
+[33mcommit 02882f5467a5443ffa5a5ed9b8d11fb36f78d84b[m[33m ([m[1;31morigin/TP06[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mTP06[m[33m)[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Wed Mar 26 08:53:47 2025 +0700
+
+    Add new migration files for 6 tables, and add new model files - relationships inside each model
+
+[33mcommit 91cd062dfb903f44bc78425eaa98ebf1894e996d[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Wed Mar 26 02:18:07 2025 +0700
+
+    Second testing commit
+
+[33mcommit fbf483be1ee8de68f57c6f9bd937a2b704adad9a[m
+Author: Sonavin <sonavin.rem@gmail.com>
+Date:   Thu Mar 13 13:31:53 2025 +0700
+
+    initial commit as TP06
+
+[33mcommit 179e9f437712d69f0fa8c1a3d5512e96bed14fc3[m
+Author: Thavorac <thavorac@sala.co>
+Date:   Thu Feb 20 02:29:07 2025 +0700
+
+    * Update Dockerfile, by installing zip extension
+    * Disable loading extension zip twice in php.ini
+
+[33mcommit 4793d47a71f591099054f37cd595b106d395237f[m
+Author: Thavorac <thavorac@sala.co>
+Date:   Wed Feb 19 17:34:14 2025 +0700
+
+    Laravel + Docker configuration
