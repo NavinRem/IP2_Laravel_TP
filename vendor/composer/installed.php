@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-TP9',
         'version' => 'dev-TP9',
-        'reference' => '5bbf51f0ed9fea2f04160c946ee5a846ddabf679',
+        'reference' => 'baff70a21398b5ed3fbd098967cb11cdbcbf7ea8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-TP9',
             'version' => 'dev-TP9',
-            'reference' => '5bbf51f0ed9fea2f04160c946ee5a846ddabf679',
+            'reference' => 'baff70a21398b5ed3fbd098967cb11cdbcbf7ea8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
