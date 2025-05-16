@@ -123,4 +123,13 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'providers' => [
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+        Intervention\Image\Laravel\ServiceProvider::class,
+    ],
+    'aliases' => [
+        'Image' => Intervention\Image\Laravel\Facades\Image::class,
+    ],
+
+
 ];
