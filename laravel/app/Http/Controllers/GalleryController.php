@@ -3,60 +3,68 @@
 namespace App\Http\Controllers;
 
 use Intervention\Image\Facades\Image;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
     public function upload(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        ]);
+{
+    $request->validate([
+        'image' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    ]);
 
-        try {
-            $path = $request->file('image')->store('gallery', 'minio');
+    try {
+        $image = $request->file('image');
+        $extension = strtolower($image->getClientOriginalExtension());
+        $fileName = uniqid() . '.' . $extension;
 
-            if (!$path) {
-                return response()->json(['error' => 'Upload failed. No path returned.'], 500);
-            }
+        // Store original locally
+        $localPath = $image->storeAs('gallery', $fileName, 'public');
 
-            // Optional: Make it public
-            // Storage::disk('minio')->setVisibility($path, 'public');
+        // Generate local thumbnail
+        $thumbnail_local = 'thumbnails/' . $fileName;
+        Image::make($image->getRealPath())
+            ->fit(200, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->save(storage_path('app/public/' . $thumbnail_local));
 
-                    // Get original image content
-            // $imageContent = file_get_contents($request->file('image')->getRealPath());
+        // Save original to MinIO
+        $fileContents = file_get_contents($image->getRealPath());
+        $path = 'Gallery/' . $fileName;
+        Storage::disk('minio')->put($path, $fileContents);
+        Storage::disk('minio')->setVisibility($path, 'public');
 
-            // Create thumbnail (e.g., 300x200)
-            // $thumbnail = Image::make($imageContent)
-            //     ->resize(300, 200, function ($constraint) {
-            //         $constraint->aspectRatio();
-            //         $constraint->upsize();
-            //     })
-            //     ->encode();
+        $thumbnail_minio = null;
 
-            // Save thumbnail to 'gallery/thumbnails' folder with same filename
-            // $thumbnailPath = 'gallery/thumbnails/' . basename($path);
+        // Generate and upload thumbnail to MinIO if image
+        if (in_array($extension, ['jpg', 'jpeg', 'png'])) {
+            $thumbnailImage = Image::make($image->getRealPath())
+                ->resize(150, 150, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })
+                ->encode($extension);
 
-            // Store thumbnail on the same disk (MinIO)
-            // Storage::disk('minio')->put($thumbnailPath, (string) $thumbnail);
-            // Storage::disk('minio')->setVisibility($thumbnailPath, 'public');
-
-            // Optionally make them public
-            Storage::disk('minio')->setVisibility($path, 'public');
-
-
-            return response()->json([
-                'message' => 'Image and thumbnail uploaded successfully!',
-                'path' => $path,
-                // 'thumbnail_path' => $thumbnailPath,
-                'url' => Storage::disk('minio')->url($path),
-                // 'thumbnail_url' => Storage::disk('minio')->url($thumbnailPath),
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Upload failed: ' . $e->getMessage(),
-            ], 500);
+            $thumbnailPath = 'Thumbnails/' . $fileName;
+            Storage::disk('minio')->put($thumbnailPath, (string) $thumbnailImage);
+            $thumbnail_minio = $thumbnailPath;
         }
+
+        return response()->json([
+            'message' => 'Image and thumbnail uploaded successfully!',
+            'path' => $path,
+            'url' => Storage::disk('minio')->url($path),
+            'thumbnail' => $thumbnail_minio
+                ? Storage::disk('minio')->url($thumbnail_minio)
+                : null,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Upload failed: ' . $e->getMessage(),
+        ], 500);
     }
+}
+
 }

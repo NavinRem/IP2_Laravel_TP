@@ -25,7 +25,6 @@ Route::get('/upload_gallery', function () {
 });
 Route::post('/upload_gallery', [GalleryController::class, 'upload'])->name('upload');
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
