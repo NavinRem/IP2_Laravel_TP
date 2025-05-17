@@ -10,4 +10,9 @@ RUN docker-php-ext-install pdo pdo_mysql zip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # RUN composer update
 # Set working directory
+RUN apt update && apt install -y libpng-dev libjpeg-dev libfreetype6-dev libonig-dev
+RUN docker-php-ext-install pdo pdo_mysql zip
+
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 WORKDIR /var/www
