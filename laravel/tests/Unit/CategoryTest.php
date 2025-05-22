@@ -36,11 +36,11 @@ class CategoryTest extends TestCase
  public function testCreateCategory()
  {
      $response = $this->post('/api/categories', [
-         'name' => 'New Categoryp',
+         'name' => 'New Category',
      ]);
 
      $response->assertStatus(201);
-     $this->assertDatabaseHas('categories', ['name' => 'New Categoryp']);
+     $this->assertDatabaseHas('categories', ['name' => 'New Category']);
  }
 
  /**
